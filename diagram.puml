@@ -459,8 +459,6 @@ class CincinBola {
     + cetakRadiusCincin(): void
 }
 
-
-
 IBenda2D ..> IBendaGeometri
 IBenda3D ..> IBendaGeometri
 Benda2D ..> IBenda2D
