@@ -1,10 +1,19 @@
 @startuml UTSPbo
-interface IBendaGeometri{
-    + mencetakNamaBenda(): void
-    + mencetakWarnaBenda(): void
-    + mengaturNamaBenda(): void
-    + mengaturWarnaBenda(): void
+'masih kurang paham misahe gimana, tur kira" kayak gini
+interface IBendaGeometri {
+  + getNama(): String
+  + getWarna(): String
+  + setNama(nama: String)
+  + setWarna(warna: String)
+  + cetakIdentitas()
 }
+
+' interface IBendaGeometri{
+'     + mencetakNamaBenda(): void
+'     + mencetakWarnaBenda(): void
+'     + mengaturNamaBenda(): void
+'     + mengaturWarnaBenda(): void
+' }
 
 interface IBenda2D {
     + menghitungLuas(params: double[]): double
@@ -21,34 +30,38 @@ interface IBenda3D {
     + menghitungVolume(params: int[]): double
     + menghitungLuasPermukaan(): float
     + menghitungLuasPermukaan(params: double[]): double
-    + menghitungLuasPermukaan(params: int[]): double
+    + menghitungLuasPermukaan(params: int[]): d ouble
 } 
 
 abstract class Benda2D {
-    - luas: float
-    - keliling: float
-    - namaBenda: string
-    - warnaBenda: string
-    + Benda2D(warna: string, namaBenda: string)
-    + mencetakLuas(): void
-    + mencetakKeliling(): void
-    
+  - nama: String
+  - warna: String
+  + getNama(): String
+  + getWarna(): String
+  + setNama(nama: String)
+  + setWarna(warna: String)
+  + cetakIdentitas()
+  + hitungLuas(): double
+  + hitungKeliling(): double
 }
 
 abstract class Benda3D {
-    - luasPermukaan: float
-    - luasAlas: float
-    - volume: float
-    - namaBenda: string
-    - warnaBenda: string
-    + Benda3D(warna: string, namaBenda: string)
-    + mencetakVolume(): void
-    + mencetakLuasPermukaan(): void
+  - nama: String
+  - warna: String
+  + getNama(): String
+  + getWarna(): String
+  + setNama(nama: String)
+  + setWarna(warna: String)
+  + cetakIdentitas()
+  + hitungVolume(): double
+  + hitungLuasPermukaan(): double
 }
 ' Benda 2D - Implementasi
 class Segitiga {
     - alas: double
     - tinggi: double
+    + hitungLuas(): double
+    + hitungKeliling(): double
     + Segitiga(alas: double, tinggi: double)
     + Segitiga(alas: int, tinggi: double)
     + Segitiga(alas: double, tinggi: int)
@@ -59,11 +72,12 @@ class Segitiga {
     + aturTinggi(tinggi: int): void
     + cetakAlas(): void
     + cetakTinggi(): void
-
 }
 
 class Persegi {
     - sisi: double
+    + hitungLuas(): double
+    + hitungKeliling(): double
     + Persegi(sisi: double)
     + Persegi(sisi: int)
     + cetakSisi(): void
@@ -74,6 +88,8 @@ class Persegi {
 class PersegiPanjang {
     - panjang: double
     - lebar: double
+    + hitungLuas(): double
+    + hitungKeliling(): double
     + PersegiPanjang(panjang: double, lebar: double)
     + PersegiPanjang(panjang: int, lebar: double)
     + PersegiPanjang(panjang: double, lebar: int)
@@ -413,6 +429,8 @@ class KerucutTerpancung {
 
 class Bola {
     - radius: double
+    + hitungVolume(): double
+    + hitungLuasPermukaan(): double
     + Bola(radius: double)
     + Bola(radius: int)
     + aturRadius(radius: double): void
@@ -522,10 +540,3 @@ KerucutTerpancung *-- Lingkaran : alasBawah
 KerucutTerpancung *-- Lingkaran : alasAtas
 
 @enduml
-
-
-
-
-
-
-
