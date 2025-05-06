@@ -194,44 +194,6 @@ Trapesium --|> Benda2D
 BelahKetupat --|> Benda2D
 LayangLayang --|> Benda2D
 Lingkaran --|> Benda2D
-TemberengLingkaran --|> Benda2D
-JuringLingkaran --|> Benda2D
-
-
-
-' Benda 3D - Implementasi
-' ======================== PRISMA ========================
-
-' class Prisma {
-'     - tinggi: double
-'     + aturTinggi(tinggi: double): void
-'     + aturTinggi(tinggi: int): void
-'     + cetakTinggi(): void
-
-' }
-' Prisma --|> Benda3D
-
-class PrismaSegitiga {
-    + PrismaSegitiga(bendaAlas: Segitiga, tinggi: double)
-    + PrismaSegitiga(bendaAlas: Segitiga, tinggi: int)
-    - tinggi: double
-    + menghitungVolume(): double
-    + menghitungLuasPermukaan(): double
-}
-PrismaSegitiga --|> Segitiga
-PrismaSegitiga ..> IBenda3D
-
-
-interface IBenda3D {
-    + menghitungVolume(): float
-    + menghitungVolume(params: double[]): double
-    + menghitungVolume(params: int[]): double
-    + menghitungLuasPermukaan(): float
-    + menghitungLuasPermukaan(params: double[]): double
-    + menghitungLuasPermukaan(params: int[]): double
-    + mencetakVolume(): void
-    + mencetakLuasPermukaan(): void
-}
 
 ' ================= PRISMA =================
 class PrismaSegitiga {
@@ -525,7 +487,6 @@ class KerucutTerpancung {
 }
 KerucutTerpancung --|> Kerucut 
 KerucutTerpancung ..|> IBenda3D
-KerucutTerpancung *-- Kerucut : pancungan 
 
 class Bola {
     - radius: double
