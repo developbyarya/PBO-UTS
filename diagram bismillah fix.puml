@@ -1,0 +1,602 @@
+@startuml UTSPbo
+interface IBendaGeometri{
+    + mencetakNamaBenda(): void
+    + mencetakWarnaBenda(): void
+    + mengaturNamaBenda(): void
+    + mengaturWarnaBenda(): void
+}
+
+abstract class Benda2D {
+    - luas: float
+    - keliling: float
+    - namaBenda: string
+    - warnaBenda: string
+    + Benda2D(warna: string, namaBenda: string)
+    + menghitungLuas(params: double[]): double
+    + menghitungLuas(params: int[]): double
+    + menghitungKeliling(): float
+    + menghitungKeliling(params: double[]): double
+    + menghitungKeliling(params: int[]): double
+    + mencetakLuas(): void
+    + mencetakKeliling(): void
+}
+
+interface IBenda3D {
+    + menghitungVolume(): float
+    + menghitungVolume(params: double[]): double
+    + menghitungVolume(params: int[]): double
+    + menghitungLuasPermukaan(): float
+    + menghitungLuasPermukaan(params: double[]): double
+    + menghitungLuasPermukaan(params: int[]): double
+    + mencetakVolume(): void
+    + mencetakLuasPermukaan(): void
+}
+
+Benda2D --|> IBendaGeometri
+IBenda3D ..> IBendaGeometri
+
+
+' Benda 2D - Implementasi
+class Segitiga {
+    - alas: double
+    - tinggi: double
+    + Segitiga(alas: double, tinggi: double)
+    + Segitiga(alas: int, tinggi: double)
+    + Segitiga(alas: double, tinggi: int)
+    + Segitiga(alas: int, tinggi: int)
+    + aturAlas(alas: double): void
+    + aturAlas(alas: int): void
+    + aturTinggi(tinggi: double): void
+    + aturTinggi(tinggi: int): void
+    + cetakAlas(): void
+    + cetakTinggi(): void
+}
+
+class Persegi {
+    - sisi: double
+    + Persegi(sisi: double)
+    + Persegi(sisi: int)
+    + cetakSisi(): void
+    + aturSisi(sisi: double): void
+    + aturSisi(sisi: int): void
+}
+
+class PersegiPanjang {
+    - panjang: double
+    - lebar: double
+    + PersegiPanjang(panjang: double, lebar: double)
+    + PersegiPanjang(panjang: int, lebar: double)
+    + PersegiPanjang(panjang: double, lebar: int)
+    + PersegiPanjang(panjang: int, lebar: int)
+    + cetakPanjang(): void
+    + cetakLebar(): void
+    + aturPanjang(sisi: double): void
+    + aturPanjang(sisi: int): void
+    + aturLebar(sisi: double): void
+    + aturLebar(sisi: int): void
+}
+
+class JajaranGenjang {
+    - alas: double
+    - tinggi: double
+    - sisiMiring: double
+    + JajaranGenjang(alas: double, tinggi: double, sisiMiring: double)
+    + JajaranGenjang(alas: int, tinggi: int, sisiMiring: int)
+    + cetakAlas(): void
+    + cetakTinggi(): void
+    + cetakSisiMiring(): void
+    + aturAlas(alas: double): void
+    + aturAlas(alas: int): void
+    + aturTinggi(tinggi: double): void
+    + aturTinggi(tinggi: int): void
+    + aturSisiMiring(sisiMiring: double): void
+    + aturSisiMiring(sisiMiring: int): void
+}
+
+class Trapesium {
+    - alasAtas: double
+    - alasBawah: double
+    - tinggi: double
+    - sisiKiri: double
+    - sisiKanan: double
+    + Trapesium(alasAtas: double, alasBawah: double, tinggi: double, sisiKiri: double, sisiKanan: double)
+    + Trapesium(alasAtas: int, alasBawah: int, tinggi: int, sisiKiri: int, sisiKanan: int)
+    + cetakAlasAtas(): void
+    + cetakAlasBawah(): void
+    + cetakTinggi(): void
+    + cetakSisiKiri(): void
+    + cetakSisiKanan(): void
+    + aturAlasAtas(alasAtas: double): void
+    + aturAlasAtas(alasAtas: int): void
+    + aturAlasBawah(alasBawah: double): void
+    + aturAlasBawah(alasBawah: int): void
+    + aturTinggi(tinggi: double): void
+    + aturTinggi(tinggi: int): void
+    + aturSisiKiri(sisiKiri: double): void
+    + aturSisiKiri(sisiKiri: int): void
+    + aturSisiKanan(sisiKanan: double): void
+    + aturSisiKanan(sisiKanan: int): void
+}
+
+class BelahKetupat {
+    - diagonal1: double
+    - diagonal2: double
+    - sisi: double
+    + BelahKetupat(diagonal1: double, diagonal2: double, sisi: double)
+    + BelahKetupat(diagonal1: int, diagonal2: int, sisi: int)
+    + cetakDiagonal1(): void
+    + cetakDiagonal2(): void
+    + cetakSisi(): void
+    + aturDiagonal1(diagonal1: double): void
+    + aturDiagonal1(diagonal1: int): void
+    + aturDiagonal2(diagonal2: double): void
+    + aturDiagonal2(diagonal2: int): void
+    + aturSisi(sisi: double): void
+    + aturSisi(sisi: int): void
+}
+
+class LayangLayang {
+    - diagonal1: double
+    - diagonal2: double
+    - sisiPendek: double
+    - sisiPanjang: double
+    + LayangLayang(diagonal1: double, diagonal2: double, sisiPendek: double, sisiPanjang: double)
+    + LayangLayang(diagonal1: int, diagonal2: int, sisiPendek: int, sisiPanjang: int)
+    + cetakDiagonal1(): void
+    + cetakDiagonal2(): void
+    + cetakSisiPendek(): void
+    + cetakSisiPanjang(): void
+    + aturDiagonal1(diagonal1: double): void
+    + aturDiagonal1(diagonal1: int): void
+    + aturDiagonal2(diagonal2: double): void
+    + aturDiagonal2(diagonal2: int): void
+    + aturSisiPendek(sisiPendek: double): void
+    + aturSisiPendek(sisiPendek: int): void
+    + aturSisiPanjang(sisiPanjang: double): void
+    + aturSisiPanjang(sisiPanjang: int): void
+}
+
+class Lingkaran {
+    - radius: double
+    + Lingkaran(radius: double)
+    + Lingkaran(radius: int)
+    + cetakRadius(): void
+    + aturRadius(radius: double): void
+    + aturRadius(radius: int): void
+}
+
+class TemberengLingkaran {
+    - sudut: double  
+    + TemberengLingkaran(radius: double, sudut: double)
+    + TemberengLingkaran(radius: int, sudut: int)
+    + cetakSudut(): void
+    + aturSudut(sudut: double): void
+    + aturSudut(sudut: int): void
+}
+
+TemberengLingkaran --|> Lingkaran
+
+class JuringLingkaran {
+    - sudut: double  
+    + JuringLingkaran(radius: double, sudut: double)
+    + JuringLingkaran(radius: int, sudut: int)
+    + cetakSudut(): void
+    + aturSudut(sudut: double): void
+    + aturSudut(sudut: int): void
+}
+JuringLingkaran --|> Lingkaran
+
+Segitiga --|> Benda2D
+Persegi --|> Benda2D
+PersegiPanjang --|> Benda2D
+JajaranGenjang --|> Benda2D
+Trapesium --|> Benda2D
+BelahKetupat --|> Benda2D
+LayangLayang --|> Benda2D
+Lingkaran --|> Benda2D
+TemberengLingkaran --|> Benda2D
+JuringLingkaran --|> Benda2D
+
+
+
+' Benda 3D - Implementasi
+' ======================== PRISMA ========================
+
+' class Prisma {
+'     - tinggi: double
+'     + aturTinggi(tinggi: double): void
+'     + aturTinggi(tinggi: int): void
+'     + cetakTinggi(): void
+
+' }
+' Prisma --|> Benda3D
+
+class PrismaSegitiga {
+    + PrismaSegitiga(bendaAlas: Segitiga, tinggi: double)
+    + PrismaSegitiga(bendaAlas: Segitiga, tinggi: int)
+    - tinggi: double
+    + menghitungVolume(): double
+    + menghitungLuasPermukaan(): double
+}
+PrismaSegitiga --|> Segitiga
+PrismaSegitiga ..> IBenda3D
+
+
+interface IBenda3D {
+    + menghitungVolume(): float
+    + menghitungVolume(params: double[]): double
+    + menghitungVolume(params: int[]): double
+    + menghitungLuasPermukaan(): float
+    + menghitungLuasPermukaan(params: double[]): double
+    + menghitungLuasPermukaan(params: int[]): double
+    + mencetakVolume(): void
+    + mencetakLuasPermukaan(): void
+}
+
+' ================= PRISMA =================
+class PrismaSegitiga {
+    - tinggi: double
+    - bendaAlas: Segitiga
+    + PrismaSegitiga(bendaAlas: Segitiga, tinggi: double)
+    + PrismaSegitiga(bendaAlas: Segitiga, tinggi: int)
+    + menghitungVolume(): float
+    + menghitungVolume(params: double[]): double
+    + menghitungVolume(params: int[]): double
+    + menghitungLuasPermukaan(): float
+    + menghitungLuasPermukaan(params: double[]): double
+    + menghitungLuasPermukaan(params: int[]): double
+    + mencetakVolume(): void
+    + mencetakLuasPermukaan(): void
+}
+PrismaSegitiga --|> Segitiga
+PrismaSegitiga ..|> IBenda3D
+
+class PrismaPersegi {
+    - tinggi: double
+    - bendaAlas: Persegi
+    + PrismaPersegi(bendaAlas: Persegi, tinggi: double)
+    + PrismaPersegi(bendaAlas: Persegi, tinggi: int)
+    + menghitungVolume(): float
+    + menghitungVolume(params: double[]): double
+    + menghitungVolume(params: int[]): double
+    + menghitungLuasPermukaan(): float
+    + menghitungLuasPermukaan(params: double[]): double
+    + menghitungLuasPermukaan(params: int[]): double
+    + mencetakVolume(): void
+    + mencetakLuasPermukaan(): void
+}
+PrismaPersegi --|> Persegi
+PrismaPersegi ..|> IBenda3D
+
+class PrismaPersegiPanjang {
+    - tinggi: double
+    - bendaAlas: PersegiPanjang
+    + PrismaPersegiPanjang(bendaAlas: PersegiPanjang, tinggi: double)
+    + PrismaPersegiPanjang(bendaAlas: PersegiPanjang, tinggi: int)
+    + menghitungVolume(): float
+    + menghitungVolume(params: double[]): double
+    + menghitungVolume(params: int[]): double
+    + menghitungLuasPermukaan(): float
+    + menghitungLuasPermukaan(params: double[]): double
+    + menghitungLuasPermukaan(params: int[]): double
+    + mencetakVolume(): void
+    + mencetakLuasPermukaan(): void
+}
+PrismaPersegiPanjang --|> PersegiPanjang
+PrismaPersegiPanjang ..|> IBenda3D
+
+class PrismaJajaranGenjang {
+    - tinggi: double
+    - bendaAlas: JajaranGenjang
+    + PrismaJajaranGenjang(bendaAlas: JajaranGenjang, tinggi: double)
+    + PrismaJajaranGenjang(bendaAlas: JajaranGenjang, tinggi: int)
+    + menghitungVolume(): float
+    + menghitungVolume(params: double[]): double
+    + menghitungVolume(params: int[]): double
+    + menghitungLuasPermukaan(): float
+    + menghitungLuasPermukaan(params: double[]): double
+    + menghitungLuasPermukaan(params: int[]): double
+    + mencetakVolume(): void
+    + mencetakLuasPermukaan(): void
+}
+PrismaJajaranGenjang --|> JajaranGenjang
+PrismaJajaranGenjang ..|> IBenda3D
+
+class PrismaTrapesium {
+    - tinggi: double
+    - bendaAlas: Trapesium
+    + PrismaTrapesium(bendaAlas: Trapesium, tinggi: double)
+    + PrismaTrapesium(bendaAlas: Trapesium, tinggi: int)
+    + menghitungVolume(): float
+    + menghitungVolume(params: double[]): double
+    + menghitungVolume(params: int[]): double
+    + menghitungLuasPermukaan(): float
+    + menghitungLuasPermukaan(params: double[]): double
+    + menghitungLuasPermukaan(params: int[]): double
+    + mencetakVolume(): void
+    + mencetakLuasPermukaan(): void
+}
+PrismaTrapesium --|> Trapesium
+PrismaTrapesium ..|> IBenda3D
+
+class PrismaBelahKetupat {
+    - tinggi: double
+    - bendaAlas: BelahKetupat
+    + PrismaBelahKetupat(bendaAlas: BelahKetupat, tinggi: double)
+    + PrismaBelahKetupat(bendaAlas: BelahKetupat, tinggi: int)
+    + menghitungVolume(): float
+    + menghitungVolume(params: double[]): double
+    + menghitungVolume(params: int[]): double
+    + menghitungLuasPermukaan(): float
+    + menghitungLuasPermukaan(params: double[]): double
+    + menghitungLuasPermukaan(params: int[]): double
+    + mencetakVolume(): void
+    + mencetakLuasPermukaan(): void
+}
+PrismaBelahKetupat --|> BelahKetupat
+PrismaBelahKetupat ..|> IBenda3D
+
+class PrismaLayangLayang {
+    - tinggi: double
+    - bendaAlas: LayangLayang
+    + PrismaLayangLayang(bendaAlas: LayangLayang, tinggi: double)
+    + PrismaLayangLayang(bendaAlas: LayangLayang, tinggi: int)
+    + menghitungVolume(): float
+    + menghitungVolume(params: double[]): double
+    + menghitungVolume(params: int[]): double
+    + menghitungLuasPermukaan(): float
+    + menghitungLuasPermukaan(params: double[]): double
+    + menghitungLuasPermukaan(params: int[]): double
+    + mencetakVolume(): void
+    + mencetakLuasPermukaan(): void
+}
+PrismaLayangLayang --|> LayangLayang
+PrismaLayangLayang ..|> IBenda3D
+
+' ================= LIMAS =================
+class LimasSegitiga {
+    - tinggi: double
+    - bendaAlas: Segitiga
+    + LimasSegitiga(bendaAlas: Segitiga, tinggi: double)
+    + LimasSegitiga(bendaAlas: Segitiga, tinggi: int)
+    + menghitungVolume(): float
+    + menghitungVolume(params: double[]): double
+    + menghitungVolume(params: int[]): double
+    + menghitungLuasPermukaan(): float
+    + menghitungLuasPermukaan(params: double[]): double
+    + menghitungLuasPermukaan(params: int[]): double
+    + mencetakVolume(): void
+    + mencetakLuasPermukaan(): void
+}
+LimasSegitiga --|> Segitiga
+LimasSegitiga ..|> IBenda3D
+
+class LimasPersegi {
+    - tinggi: double
+    - bendaAlas: Persegi
+    + LimasPersegi(bendaAlas: Persegi, tinggi: double)
+    + LimasPersegi(bendaAlas: Persegi, tinggi: int)
+    + menghitungVolume(): float
+    + menghitungVolume(params: double[]): double
+    + menghitungVolume(params: int[]): double
+    + menghitungLuasPermukaan(): float
+    + menghitungLuasPermukaan(params: double[]): double
+    + menghitungLuasPermukaan(params: int[]): double
+    + mencetakVolume(): void
+    + mencetakLuasPermukaan(): void
+}
+LimasPersegi --|> Persegi
+LimasPersegi ..|> IBenda3D
+
+class LimasPersegiPanjang {
+    - tinggi: double
+    - bendaAlas: PersegiPanjang
+    + LimasPersegiPanjang(bendaAlas: PersegiPanjang, tinggi: double)
+    + LimasPersegiPanjang(bendaAlas: PersegiPanjang, tinggi: int)
+    + menghitungVolume(): float
+    + menghitungVolume(params: double[]): double
+    + menghitungVolume(params: int[]): double
+    + menghitungLuasPermukaan(): float
+    + menghitungLuasPermukaan(params: double[]): double
+    + menghitungLuasPermukaan(params: int[]): double
+    + mencetakVolume(): void
+    + mencetakLuasPermukaan(): void
+}
+LimasPersegiPanjang --|> PersegiPanjang
+LimasPersegiPanjang ..|> IBenda3D
+
+class LimasJajaranGenjang {
+    - tinggi: double
+    - bendaAlas: JajaranGenjang
+    + LimasJajaranGenjang(bendaAlas: JajaranGenjang, tinggi: double)
+    + LimasJajaranGenjang(bendaAlas: JajaranGenjang, tinggi: int)
+    + menghitungVolume(): float
+    + menghitungVolume(params: double[]): double
+    + menghitungVolume(params: int[]): double
+    + menghitungLuasPermukaan(): float
+    + menghitungLuasPermukaan(params: double[]): double
+    + menghitungLuasPermukaan(params: int[]): double
+    + mencetakVolume(): void
+    + mencetakLuasPermukaan(): void
+}
+LimasJajaranGenjang --|> JajaranGenjang
+LimasJajaranGenjang ..|> IBenda3D
+
+class LimasTrapesium {
+    - tinggi: double
+    - bendaAlas: Trapesium
+    + LimasTrapesium(bendaAlas: Trapesium, tinggi: double)
+    + LimasTrapesium(bendaAlas: Trapesium, tinggi: int)
+    + menghitungVolume(): float
+    + menghitungVolume(params: double[]): double
+    + menghitungVolume(params: int[]): double
+    + menghitungLuasPermukaan(): float
+    + menghitungLuasPermukaan(params: double[]): double
+    + menghitungLuasPermukaan(params: int[]): double
+    + mencetakVolume(): void
+    + mencetakLuasPermukaan(): void
+}
+LimasTrapesium --|> Trapesium
+LimasTrapesium ..|> IBenda3D
+
+class LimasBelahKetupat {
+    - tinggi: double
+    - bendaAlas: BelahKetupat
+    + LimasBelahKetupat(bendaAlas: BelahKetupat, tinggi: double)
+    + LimasBelahKetupat(bendaAlas: BelahKetupat, tinggi: int)
+    + menghitungVolume(): float
+    + menghitungVolume(params: double[]): double
+    + menghitungVolume(params: int[]): double
+    + menghitungLuasPermukaan(): float
+    + menghitungLuasPermukaan(params: double[]): double
+    + menghitungLuasPermukaan(params: int[]): double
+    + mencetakVolume(): void
+    + mencetakLuasPermukaan(): void
+}
+LimasBelahKetupat --|> BelahKetupat
+LimasBelahKetupat ..|> IBenda3D
+
+class LimasLayangLayang {
+    - tinggi: double
+    - bendaAlas: LayangLayang
+    + LimasLayangLayang(bendaAlas: LayangLayang, tinggi: double)
+    + LimasLayangLayang(bendaAlas: LayangLayang, tinggi: int)
+    + menghitungVolume(): float
+    + menghitungVolume(params: double[]): double
+    + menghitungVolume(params: int[]): double
+    + menghitungLuasPermukaan(): float
+    + menghitungLuasPermukaan(params: double[]): double
+    + menghitungLuasPermukaan(params: int[]): double
+    + mencetakVolume(): void
+    + mencetakLuasPermukaan(): void
+}
+LimasLayangLayang --|> LayangLayang
+LimasLayangLayang ..|> IBenda3D
+
+' ============== BANGUN PUTAR ==============
+class Tabung {
+    - tinggi: double
+    - bendaAlas: Lingkaran
+    + Tabung(bendaAlas: Lingkaran, tinggi: double)
+    + Tabung(bendaAlas: Lingkaran, tinggi: int)
+    + menghitungVolume(): float
+    + menghitungVolume(params: double[]): double
+    + menghitungVolume(params: int[]): double
+    + menghitungLuasPermukaan(): float
+    + menghitungLuasPermukaan(params: double[]): double
+    + menghitungLuasPermukaan(params: int[]): double
+    + mencetakVolume(): void
+    + mencetakLuasPermukaan(): void
+}
+Tabung --|> Lingkaran
+Tabung ..|> IBenda3D
+
+class Kerucut {
+    - tinggi: double
+    - bendaAlas: Lingkaran
+    + Kerucut(bendaAlas: Lingkaran, tinggi: double)
+    + Kerucut(bendaAlas: Lingkaran, tinggi: int)
+    + menghitungVolume(): float
+    + menghitungVolume(params: double[]): double
+    + menghitungVolume(params: int[]): double
+    + menghitungLuasPermukaan(): float
+    + menghitungLuasPermukaan(params: double[]): double
+    + menghitungLuasPermukaan(params: int[]): double
+    + mencetakVolume(): void
+    + mencetakLuasPermukaan(): void
+}
+Kerucut --|> Lingkaran
+Kerucut ..|> IBenda3D
+
+class KerucutTerpancung {
+    - tinggi: double
+    - alas: Lingkaran
+    - pancungan: Kerucut
+    + KerucutTerpancung(alas: Lingkaran, tinggi: double, pancungan: Kerucut)
+    + KerucutTerpancung(alas: Lingkaran, tinggi: int, pancungan: Kerucut)
+    + menghitungVolume(): float
+    + menghitungVolume(params: double[]): double
+    + menghitungVolume(params: int[]): double
+    + menghitungLuasPermukaan(): float
+    + menghitungLuasPermukaan(params: double[]): double
+    + menghitungLuasPermukaan(params: int[]): double
+    + mencetakVolume(): void
+    + mencetakLuasPermukaan(): void
+}
+KerucutTerpancung --|> Kerucut 
+KerucutTerpancung ..|> IBenda3D
+KerucutTerpancung *-- Kerucut : pancungan 
+
+class Bola {
+    - radius: double
+    + Bola(radius: double)
+    + Bola(radius: int)
+    + menghitungVolume(): float
+    + menghitungVolume(params: double[]): double
+    + menghitungVolume(params: int[]): double
+    + menghitungLuasPermukaan(): float
+    + menghitungLuasPermukaan(params: double[]): double
+    + menghitungLuasPermukaan(params: int[]): double
+    + mencetakVolume(): void
+    + mencetakLuasPermukaan(): void
+}
+Bola --|> Lingkaran
+Bola ..|> IBenda3D
+
+class TemberengBola {
+    - tinggi: double
+    + TemberengBola(radius: double, tinggi: double)
+    + TemberengBola(radius: int, tinggi: int)
+    + menghitungVolume(): float
+    + menghitungVolume(params: double[]): double
+    + menghitungVolume(params: int[]): double
+    + menghitungLuasPermukaan(): float
+    + menghitungLuasPermukaan(params: double[]): double
+    + menghitungLuasPermukaan(params: int[]): double
+    + mencetakVolume(): void
+    + mencetakLuasPermukaan(): void
+}
+TemberengBola --|> Bola 
+TemberengBola ..|> IBenda3D
+
+class JuringBola {
+    - sudut: double
+    + JuringBola(radius: double, sudut: double)
+    + JuringBola(radius: int, sudut: int)
+    + menghitungVolume(): float
+    + menghitungVolume(params: double[]): double
+    + menghitungVolume(params: int[]): double
+    + menghitungLuasPermukaan(): float
+    + menghitungLuasPermukaan(params: double[]): double
+    + menghitungLuasPermukaan(params: int[]): double
+    + mencetakVolume(): void
+    + mencetakLuasPermukaan(): void
+}
+JuringBola --|> Bola 
+JuringBola ..|> IBenda3D
+
+class CincinBola {
+    - radiusCincin: double
+    + CincinBola(radiusBola: double, radiusCincin: double)
+    + CincinBola(radiusBola: int, radiusCincin: int)
+    + menghitungVolume(): float
+    + menghitungVolume(params: double[]): double
+    + menghitungVolume(params: int[]): double
+    + menghitungLuasPermukaan(): float
+    + menghitungLuasPermukaan(params: double[]): double
+    + menghitungLuasPermukaan(params: int[]): double
+    + mencetakVolume(): void
+    + mencetakLuasPermukaan(): void
+}
+CincinBola --|> Bola 
+CincinBola ..|> IBenda3D
+
+@enduml
+
+
+
+
+
+
+
+
