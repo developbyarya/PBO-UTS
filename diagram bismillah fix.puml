@@ -19,6 +19,10 @@ abstract class Benda2D {
     + menghitungKeliling(params: int[]): double
     + mencetakLuas(): void
     + mencetakKeliling(): void
+    + mencetakNamaBenda(): void
+    + mencetakWarnaBenda(): void
+    + mengaturNamaBenda(): void
+    + mengaturWarnaBenda(): void
 }
 
 interface IBenda3D {
