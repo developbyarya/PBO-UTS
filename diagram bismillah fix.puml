@@ -487,6 +487,7 @@ class KerucutTerpancung {
 }
 KerucutTerpancung --|> Kerucut 
 KerucutTerpancung ..|> IBenda3D
+KerucutTerpancung *-- Kerucut : pancungan 
 
 class Bola {
     - radius: double
