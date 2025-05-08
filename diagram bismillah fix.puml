@@ -19,10 +19,6 @@ abstract class Benda2D {
     + menghitungKeliling(params: int[]): double
     + mencetakLuas(): void
     + mencetakKeliling(): void
-    + mencetakNamaBenda(): void
-    + mencetakWarnaBenda(): void
-    + mengaturNamaBenda(): void
-    + mengaturWarnaBenda(): void
 }
 
 interface IBenda3D {
@@ -54,6 +50,13 @@ class Segitiga {
     + aturTinggi(tinggi: int): void
     + cetakAlas(): void
     + cetakTinggi(): void
+    + menghitungLuas(params: double[]): double
+    + menghitungLuas(params: int[]): double
+    + menghitungKeliling(): float
+    + menghitungKeliling(params: double[]): double
+    + menghitungKeliling(params: int[]): double
+    + mencetakLuas(): void
+    + mencetakKeliling(): void
 }
 
 class Persegi {
@@ -63,6 +66,13 @@ class Persegi {
     + cetakSisi(): void
     + aturSisi(sisi: double): void
     + aturSisi(sisi: int): void
+    + menghitungLuas(params: double[]): double
+    + menghitungLuas(params: int[]): double
+    + menghitungKeliling(): float
+    + menghitungKeliling(params: double[]): double
+    + menghitungKeliling(params: int[]): double
+    + mencetakLuas(): void
+    + mencetakKeliling(): void
 }
 
 class PersegiPanjang {
@@ -78,6 +88,13 @@ class PersegiPanjang {
     + aturPanjang(sisi: int): void
     + aturLebar(sisi: double): void
     + aturLebar(sisi: int): void
+    + menghitungLuas(params: double[]): double
+    + menghitungLuas(params: int[]): double
+    + menghitungKeliling(): float
+    + menghitungKeliling(params: double[]): double
+    + menghitungKeliling(params: int[]): double
+    + mencetakLuas(): void
+    + mencetakKeliling(): void
 }
 
 class JajaranGenjang {
@@ -95,6 +112,13 @@ class JajaranGenjang {
     + aturTinggi(tinggi: int): void
     + aturSisiMiring(sisiMiring: double): void
     + aturSisiMiring(sisiMiring: int): void
+    + menghitungLuas(params: double[]): double
+    + menghitungLuas(params: int[]): double
+    + menghitungKeliling(): float
+    + menghitungKeliling(params: double[]): double
+    + menghitungKeliling(params: int[]): double
+    + mencetakLuas(): void
+    + mencetakKeliling(): void
 }
 
 class Trapesium {
@@ -120,6 +144,13 @@ class Trapesium {
     + aturSisiKiri(sisiKiri: int): void
     + aturSisiKanan(sisiKanan: double): void
     + aturSisiKanan(sisiKanan: int): void
+    + menghitungLuas(params: double[]): double
+    + menghitungLuas(params: int[]): double
+    + menghitungKeliling(): float
+    + menghitungKeliling(params: double[]): double
+    + menghitungKeliling(params: int[]): double
+    + mencetakLuas(): void
+    + mencetakKeliling(): void
 }
 
 class BelahKetupat {
@@ -137,6 +168,13 @@ class BelahKetupat {
     + aturDiagonal2(diagonal2: int): void
     + aturSisi(sisi: double): void
     + aturSisi(sisi: int): void
+    + menghitungLuas(params: double[]): double
+    + menghitungLuas(params: int[]): double
+    + menghitungKeliling(): float
+    + menghitungKeliling(params: double[]): double
+    + menghitungKeliling(params: int[]): double
+    + mencetakLuas(): void
+    + mencetakKeliling(): void
 }
 
 class LayangLayang {
@@ -158,6 +196,13 @@ class LayangLayang {
     + aturSisiPendek(sisiPendek: int): void
     + aturSisiPanjang(sisiPanjang: double): void
     + aturSisiPanjang(sisiPanjang: int): void
+    + menghitungLuas(params: double[]): double
+    + menghitungLuas(params: int[]): double
+    + menghitungKeliling(): float
+    + menghitungKeliling(params: double[]): double
+    + menghitungKeliling(params: int[]): double
+    + mencetakLuas(): void
+    + mencetakKeliling(): void
 }
 
 class Lingkaran {
@@ -167,18 +212,35 @@ class Lingkaran {
     + cetakRadius(): void
     + aturRadius(radius: double): void
     + aturRadius(radius: int): void
+    + menghitungLuas(params: double[]): double
+    + menghitungLuas(params: int[]): double
+    + menghitungKeliling(): float
+    + menghitungKeliling(params: double[]): double
+    + menghitungKeliling(params: int[]): double
+    + mencetakLuas(): void
+    + mencetakKeliling(): void
 }
 
 class TemberengLingkaran {
     - sudut: double  
+    - segitigaJuring: Segitiga
     + TemberengLingkaran(radius: double, sudut: double)
     + TemberengLingkaran(radius: int, sudut: int)
     + cetakSudut(): void
     + aturSudut(sudut: double): void
     + aturSudut(sudut: int): void
+    + menghitungLuas(params: double[]): double
+    + menghitungLuas(params: int[]): double
+    + menghitungKeliling(): float
+    + menghitungKeliling(params: double[]): double
+    + menghitungKeliling(params: int[]): double
+    + mencetakLuas(): void
+    + mencetakKeliling(): void
 }
 
-TemberengLingkaran --|> Lingkaran
+TemberengLingkaran --|> JuringLingkaran
+TemberengLingkaran *-- Segitiga : segitigaJuring 
+
 
 class JuringLingkaran {
     - sudut: double  
@@ -187,6 +249,13 @@ class JuringLingkaran {
     + cetakSudut(): void
     + aturSudut(sudut: double): void
     + aturSudut(sudut: int): void
+    + menghitungLuas(params: double[]): double
+    + menghitungLuas(params: int[]): double
+    + menghitungKeliling(): float
+    + menghitungKeliling(params: double[]): double
+    + menghitungKeliling(params: int[]): double
+    + mencetakLuas(): void
+    + mencetakKeliling(): void
 }
 JuringLingkaran --|> Lingkaran
 
@@ -558,11 +627,3 @@ CincinBola --|> Bola
 CincinBola ..|> IBenda3D
 
 @enduml
-
-
-
-
-
-
-
-
