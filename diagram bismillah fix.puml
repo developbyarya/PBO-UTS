@@ -1,4 +1,10 @@
 @startuml UTSPbo
+
+top to bottom direction
+class Main {
+    + static void main(String args[])
+
+}
 interface IBendaGeometri{
     + mencetakNamaBenda(): void
     + mencetakWarnaBenda(): void
@@ -32,8 +38,8 @@ interface IBenda3D {
     + mencetakLuasPermukaan(): void
 }
 
-Benda2D --|> IBendaGeometri
-IBenda3D ..> IBendaGeometri
+Benda2D -u-|> IBendaGeometri
+IBenda3D .u.> IBendaGeometri
 
 
 ' Benda 2D - Implementasi
@@ -238,8 +244,8 @@ class TemberengLingkaran {
     + mencetakKeliling(): void
 }
 
-TemberengLingkaran --|> JuringLingkaran
-TemberengLingkaran *-- Segitiga : segitigaJuring 
+TemberengLingkaran -u-|> JuringLingkaran
+TemberengLingkaran *-u- Segitiga : segitigaJuring 
 
 
 class JuringLingkaran {
@@ -257,16 +263,16 @@ class JuringLingkaran {
     + mencetakLuas(): void
     + mencetakKeliling(): void
 }
-JuringLingkaran --|> Lingkaran
+JuringLingkaran -u-|> Lingkaran
 
-Segitiga --|> Benda2D
-Persegi --|> Benda2D
-PersegiPanjang --|> Benda2D
-JajaranGenjang --|> Benda2D
-Trapesium --|> Benda2D
-BelahKetupat --|> Benda2D
-LayangLayang --|> Benda2D
-Lingkaran --|> Benda2D
+Segitiga -u-|> Benda2D
+Persegi -u-|> Benda2D
+PersegiPanjang -u-|> Benda2D
+JajaranGenjang -u-|> Benda2D
+Trapesium -u-|> Benda2D
+BelahKetupat -u-|> Benda2D
+LayangLayang -u-|> Benda2D
+Lingkaran -u-|> Benda2D
 
 ' ================= PRISMA =================
 class PrismaSegitiga {
@@ -283,8 +289,8 @@ class PrismaSegitiga {
     + mencetakVolume(): void
     + mencetakLuasPermukaan(): void
 }
-PrismaSegitiga --|> Segitiga
-PrismaSegitiga ..|> IBenda3D
+PrismaSegitiga -u-|> Segitiga
+PrismaSegitiga .u.|> IBenda3D
 
 class PrismaPersegi {
     - tinggi: double
@@ -300,8 +306,8 @@ class PrismaPersegi {
     + mencetakVolume(): void
     + mencetakLuasPermukaan(): void
 }
-PrismaPersegi --|> Persegi
-PrismaPersegi ..|> IBenda3D
+PrismaPersegi -u-|> Persegi
+PrismaPersegi .u.|> IBenda3D
 
 class PrismaPersegiPanjang {
     - tinggi: double
@@ -317,8 +323,8 @@ class PrismaPersegiPanjang {
     + mencetakVolume(): void
     + mencetakLuasPermukaan(): void
 }
-PrismaPersegiPanjang --|> PersegiPanjang
-PrismaPersegiPanjang ..|> IBenda3D
+PrismaPersegiPanjang -u-|> PersegiPanjang
+PrismaPersegiPanjang .u.|> IBenda3D
 
 class PrismaJajaranGenjang {
     - tinggi: double
@@ -334,8 +340,8 @@ class PrismaJajaranGenjang {
     + mencetakVolume(): void
     + mencetakLuasPermukaan(): void
 }
-PrismaJajaranGenjang --|> JajaranGenjang
-PrismaJajaranGenjang ..|> IBenda3D
+PrismaJajaranGenjang -u-|> JajaranGenjang
+PrismaJajaranGenjang .u.|> IBenda3D
 
 class PrismaTrapesium {
     - tinggi: double
@@ -351,8 +357,8 @@ class PrismaTrapesium {
     + mencetakVolume(): void
     + mencetakLuasPermukaan(): void
 }
-PrismaTrapesium --|> Trapesium
-PrismaTrapesium ..|> IBenda3D
+PrismaTrapesium -u-|> Trapesium
+PrismaTrapesium .u.|> IBenda3D
 
 class PrismaBelahKetupat {
     - tinggi: double
@@ -368,8 +374,8 @@ class PrismaBelahKetupat {
     + mencetakVolume(): void
     + mencetakLuasPermukaan(): void
 }
-PrismaBelahKetupat --|> BelahKetupat
-PrismaBelahKetupat ..|> IBenda3D
+PrismaBelahKetupat -u-|> BelahKetupat
+PrismaBelahKetupat .u.|> IBenda3D
 
 class PrismaLayangLayang {
     - tinggi: double
@@ -385,8 +391,8 @@ class PrismaLayangLayang {
     + mencetakVolume(): void
     + mencetakLuasPermukaan(): void
 }
-PrismaLayangLayang --|> LayangLayang
-PrismaLayangLayang ..|> IBenda3D
+PrismaLayangLayang -u-|> LayangLayang
+PrismaLayangLayang .u.|> IBenda3D
 
 ' ================= LIMAS =================
 class LimasSegitiga {
@@ -403,8 +409,8 @@ class LimasSegitiga {
     + mencetakVolume(): void
     + mencetakLuasPermukaan(): void
 }
-LimasSegitiga --|> Segitiga
-LimasSegitiga ..|> IBenda3D
+LimasSegitiga -u-|> Segitiga
+LimasSegitiga .u.|> IBenda3D
 
 class LimasPersegi {
     - tinggi: double
@@ -420,8 +426,8 @@ class LimasPersegi {
     + mencetakVolume(): void
     + mencetakLuasPermukaan(): void
 }
-LimasPersegi --|> Persegi
-LimasPersegi ..|> IBenda3D
+LimasPersegi -u-|> Persegi
+LimasPersegi .u.|> IBenda3D
 
 class LimasPersegiPanjang {
     - tinggi: double
@@ -437,8 +443,8 @@ class LimasPersegiPanjang {
     + mencetakVolume(): void
     + mencetakLuasPermukaan(): void
 }
-LimasPersegiPanjang --|> PersegiPanjang
-LimasPersegiPanjang ..|> IBenda3D
+LimasPersegiPanjang -u-|> PersegiPanjang
+LimasPersegiPanjang .u.|> IBenda3D
 
 class LimasJajaranGenjang {
     - tinggi: double
@@ -454,8 +460,8 @@ class LimasJajaranGenjang {
     + mencetakVolume(): void
     + mencetakLuasPermukaan(): void
 }
-LimasJajaranGenjang --|> JajaranGenjang
-LimasJajaranGenjang ..|> IBenda3D
+LimasJajaranGenjang -u-|> JajaranGenjang
+LimasJajaranGenjang .u.|> IBenda3D
 
 class LimasTrapesium {
     - tinggi: double
@@ -471,8 +477,8 @@ class LimasTrapesium {
     + mencetakVolume(): void
     + mencetakLuasPermukaan(): void
 }
-LimasTrapesium --|> Trapesium
-LimasTrapesium ..|> IBenda3D
+LimasTrapesium -u-|> Trapesium
+LimasTrapesium .u.|> IBenda3D
 
 class LimasBelahKetupat {
     - tinggi: double
@@ -488,8 +494,8 @@ class LimasBelahKetupat {
     + mencetakVolume(): void
     + mencetakLuasPermukaan(): void
 }
-LimasBelahKetupat --|> BelahKetupat
-LimasBelahKetupat ..|> IBenda3D
+LimasBelahKetupat -u-|> BelahKetupat
+LimasBelahKetupat .u.|> IBenda3D
 
 class LimasLayangLayang {
     - tinggi: double
@@ -505,8 +511,8 @@ class LimasLayangLayang {
     + mencetakVolume(): void
     + mencetakLuasPermukaan(): void
 }
-LimasLayangLayang --|> LayangLayang
-LimasLayangLayang ..|> IBenda3D
+LimasLayangLayang -u-|> LayangLayang
+LimasLayangLayang .u.|> IBenda3D
 
 ' ============== BANGUN PUTAR ==============
 class Tabung {
@@ -523,8 +529,8 @@ class Tabung {
     + mencetakVolume(): void
     + mencetakLuasPermukaan(): void
 }
-Tabung --|> Lingkaran
-Tabung ..|> IBenda3D
+Tabung -u-|> Lingkaran
+Tabung .u.|> IBenda3D
 
 class Kerucut {
     - tinggi: double
@@ -540,8 +546,8 @@ class Kerucut {
     + mencetakVolume(): void
     + mencetakLuasPermukaan(): void
 }
-Kerucut --|> Lingkaran
-Kerucut ..|> IBenda3D
+Kerucut -u-|> Lingkaran
+Kerucut .u.|> IBenda3D
 
 class KerucutTerpancung {
     - tinggi: double
@@ -558,8 +564,8 @@ class KerucutTerpancung {
     + mencetakVolume(): void
     + mencetakLuasPermukaan(): void
 }
-KerucutTerpancung --|> Kerucut 
-KerucutTerpancung ..|> IBenda3D
+KerucutTerpancung -u-|> Kerucut 
+KerucutTerpancung .u.|> IBenda3D
 KerucutTerpancung *-- Kerucut : pancungan 
 
 class Bola {
@@ -575,8 +581,8 @@ class Bola {
     + mencetakVolume(): void
     + mencetakLuasPermukaan(): void
 }
-Bola --|> Lingkaran
-Bola ..|> IBenda3D
+Bola -u-|> Lingkaran
+Bola .u.|> IBenda3D
 
 class TemberengBola {
     - tinggi: double
@@ -591,8 +597,8 @@ class TemberengBola {
     + mencetakVolume(): void
     + mencetakLuasPermukaan(): void
 }
-TemberengBola --|> Bola 
-TemberengBola ..|> IBenda3D
+TemberengBola -u-|> Bola 
+TemberengBola .u.|> IBenda3D
 
 class JuringBola {
     - sudut: double
@@ -607,8 +613,8 @@ class JuringBola {
     + mencetakVolume(): void
     + mencetakLuasPermukaan(): void
 }
-JuringBola --|> Bola 
-JuringBola ..|> IBenda3D
+JuringBola -u-|> Bola 
+JuringBola .u.|> IBenda3D
 
 class CincinBola {
     - radiusCincin: double
@@ -623,7 +629,7 @@ class CincinBola {
     + mencetakVolume(): void
     + mencetakLuasPermukaan(): void
 }
-CincinBola --|> Bola 
-CincinBola ..|> IBenda3D
+CincinBola -u-|> Bola 
+CincinBola .u.|> IBenda3D
 
 @enduml
